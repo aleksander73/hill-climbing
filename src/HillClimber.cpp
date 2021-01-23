@@ -37,5 +37,14 @@ float HillClimber::random() {
 }
 
 Vector2d HillClimber::findMaximum(float (*f)(Vector2d)) {
-	return Vector2d(0.0f, 0.0f);
+	Vector2d v = this->origin();
+	bool keepSearching = true;
+	while(keepSearching) {
+		Vector2d sampled = this->sampleNeighbourhood(f, v);
+		if(sampled == v) {
+			keepSearching = false;
+		} else {
+			v = sampled;
+		}
+	}
 }

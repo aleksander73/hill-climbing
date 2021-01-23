@@ -7,6 +7,7 @@ class Vector2d {
 	public:
 		Vector2d(float x, float y);
 		Vector2d operator+(Vector2d v);
+		bool operator==(Vector2d v);
 		Vector2d rotate(float angle);
 		float getX();
 		float getY();
