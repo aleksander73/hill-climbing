@@ -47,4 +47,5 @@ Vector2d HillClimber::findMaximum(float (*f)(Vector2d)) {
 			v = sampled;
 		}
 	}
+	return v;
 }
