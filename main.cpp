@@ -8,7 +8,7 @@ float f(Vector2d v) {
 }
 
 int main(int argc, char* argv[]) {
-	HillClimber hillClimber = HillClimber(-100.0f, 100.0f, -100.0f, 100.0f, 100, 0.01, 100);
+	HillClimber hillClimber = HillClimber(-100.0f, 100.0f, -100.0f, 100.0f, 100, 0.01f, 100);
 	Vector2d maximum = hillClimber.findMaximum(&f);
 	std::cout << "Maximum: " << maximum << " = " << f(maximum) << std::endl;
 	return 0;
