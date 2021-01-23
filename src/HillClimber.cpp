@@ -2,11 +2,12 @@
 
 #include <random>
 
-HillClimber::HillClimber(float minX, float maxX, float minY, float maxY, float step, int neighbours) {
+HillClimber::HillClimber(float minX, float maxX, float minY, float maxY, int iterations, float step, int neighbours) {
 	this->minX = minX;
 	this->maxX = maxX;
 	this->minY = minY;
 	this->maxY = maxY;
+	this->iterations = iterations;
 	this->step = step;
 	this->neighbours = neighbours;
 }
@@ -37,15 +38,24 @@ float HillClimber::random() {
 }
 
 Vector2d HillClimber::findMaximum(float (*f)(Vector2d)) {
-	Vector2d v = this->origin();
-	bool keepSearching = true;
-	while(keepSearching) {
-		Vector2d sampled = this->sampleNeighbourhood(f, v);
-		if(sampled == v) {
-			keepSearching = false;
-		} else {
-			v = sampled;
+	Vector2d globalBest = Vector2d();
+	for(int i = 0; i < this->iterations; i++) {
+		Vector2d v = this->origin();
+		if(i == 0) {
+			globalBest = v;
+		}
+		bool keepSearching = true;
+		while(keepSearching) {
+			Vector2d sampled = this->sampleNeighbourhood(f, v);
+			if(sampled == v) {
+				keepSearching = false;
+			} else {
+				v = sampled;
+			}
+		}
+		if(f(v) > f(globalBest)) {
+			globalBest = v;
 		}
 	}
-	return v;
+	return globalBest;
 }

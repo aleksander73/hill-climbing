@@ -3,6 +3,8 @@
 #include <math.h>
 #include <cmath>
 
+Vector2d::Vector2d() : Vector2d(0.0f, 0.0f) {}
+
 Vector2d::Vector2d(float x, float y) {
 	this->x = x;
 	this->y = y;
