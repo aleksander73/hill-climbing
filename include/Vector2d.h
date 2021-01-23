@@ -1,6 +1,8 @@
 #ifndef VECTOR2D_H_
 #define VECTOR2D_H_
 
+#include <iostream>
+
 class Vector2d {
 	private:
 		float x, y;
@@ -14,6 +16,7 @@ class Vector2d {
 		void setX(float x);
 		float getY();
 		void setY(float y);
+		friend std::ostream& operator<<(std::ostream& os, Vector2d& v);
 };
 
 #endif

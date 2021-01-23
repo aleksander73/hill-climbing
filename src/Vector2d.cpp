@@ -41,3 +41,8 @@ float Vector2d::getY() {
 void Vector2d::setY(float y) {
 	this->y = y;
 }
+
+std::ostream& operator<<(std::ostream& os, Vector2d& v) {
+    os << "[" << v.getX() << ", " << v.getY() << "]";
+    return os;
+}
