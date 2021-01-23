@@ -24,11 +24,25 @@ Vector2d HillClimber::sampleNeighbourhood(float (*f)(Vector2d), Vector2d origin)
 	for(int i = 0; i < this->neighbours; i++) {
 		float angle = ((float)i / (float)neighbours) * 360.0f;
 		Vector2d v = origin + r.rotate(angle);
+		this->crop(v);
 		if(f(v) > f(best)) {
 			best = v;
 		}
 	}
 	return best;
+}
+
+Vector2d HillClimber::crop(Vector2d v) {
+	if(v.getX() < minX) {
+		v.setX(minX);
+	} else if(v.getX() > maxX) {
+		v.setX(maxX);
+	}
+	if(v.getY() < minY) {
+		v.setY(minY);
+	} else if(v.getY() > maxY) {
+		v.setY(maxY);
+	}
 }
 
 float HillClimber::random() {

@@ -11,7 +11,9 @@ class Vector2d {
 		bool operator==(Vector2d v);
 		Vector2d rotate(float angle);
 		float getX();
+		void setX(float x);
 		float getY();
+		void setY(float y);
 };
 
 #endif
