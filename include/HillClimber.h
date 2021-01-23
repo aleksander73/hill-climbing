@@ -8,10 +8,11 @@ class HillClimber {
 		float minX, maxX, minY, maxY, step;
 		int neighbours;
 		Vector2d origin();
+		Vector2d sampleNeighbourhood(float (*f)(Vector2d), Vector2d origin);
 		float random();
 	public:
 		HillClimber(float minX, float maxX, float minY, float maxY, float step, int neighbours);
-		Vector2d findMaximum(float (*f)(Vector2d&));
+		Vector2d findMaximum(float (*f)(Vector2d));
 };
 
 #endif
