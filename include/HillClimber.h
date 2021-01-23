@@ -7,6 +7,8 @@ class HillClimber {
 	private:
 		float minX, maxX, minY, maxY, step;
 		int neighbours;
+		Vector2d origin();
+		float random();
 	public:
 		HillClimber(float minX, float maxX, float minY, float maxY, float step, int neighbours);
 		Vector2d findMaximum(float (*f)(Vector2d&));
